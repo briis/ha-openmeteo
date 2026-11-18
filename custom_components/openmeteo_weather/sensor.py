@@ -18,8 +18,6 @@ from homeassistant.components.sensor import (
     SensorStateClass,
 )
 from homeassistant.const import (
-    CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
-    CONCENTRATION_PARTS_PER_MILLION,
     DEGREE,
     PERCENTAGE,
     UV_INDEX,
@@ -39,6 +37,17 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.util import dt as dt_util
 
 from aioopenmeteo import WMO_KEYS, AirQuality, Forecast
+
+try:  # Home Assistant 2026.x moved these into unit enums (old names removed in 2027.8)
+    from homeassistant.const import UnitOfDensity, UnitOfRatio
+
+    MICROGRAMS_PER_CUBIC_METER: str = UnitOfDensity.MICROGRAMS_PER_CUBIC_METER
+    PARTS_PER_MILLION: str = UnitOfRatio.PARTS_PER_MILLION
+except ImportError:  # older Home Assistant
+    from homeassistant.const import (
+        CONCENTRATION_MICROGRAMS_PER_CUBIC_METER as MICROGRAMS_PER_CUBIC_METER,
+        CONCENTRATION_PARTS_PER_MILLION as PARTS_PER_MILLION,
+    )
 
 from .const import CONF_MINUTELY_15, DEFAULT_MINUTELY_15
 from .coordinator import (
@@ -207,7 +216,7 @@ SOIL_MOISTURE = {
     "scale": 100.0,  # m³/m³ -> volumetric %
 }
 UGM3 = {
-    "native_unit_of_measurement": CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
+    "native_unit_of_measurement": MICROGRAMS_PER_CUBIC_METER,
     "suggested_display_precision": 1,
 }
 POLLEN = {"native_unit_of_measurement": POLLEN_UNIT, "suggested_display_precision": 0}
@@ -436,7 +445,7 @@ SENSORS: tuple[OpenMeteoSensorDescription, ...] = (
     _air(
         "carbon_dioxide",
         device_class=SensorDeviceClass.CO2,
-        native_unit_of_measurement=CONCENTRATION_PARTS_PER_MILLION,
+        native_unit_of_measurement=PARTS_PER_MILLION,
         suggested_display_precision=0,
     ),
     _air("dust", **UGM3),
