@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1
+
+- Use `UnitOfDensity` / `UnitOfRatio` for air quality units instead of the deprecated `CONCENTRATION_*` constants (removed in Home Assistant 2027.8). Older Home Assistant versions keep working.
+
 ## 0.1.0
 
 First version.
