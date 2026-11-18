@@ -1,6 +1,9 @@
 {
   "domain": "openmeteo_weather",
   "name": "Open-Meteo Weather",
+  "categories": [
+    "weather_alerts.forecasts"
+  ],
   "codeowners": [
     "@briis"
   ],
