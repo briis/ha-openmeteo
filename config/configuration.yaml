@@ -1,0 +1,8 @@
+# Development config for scripts/develop
+default_config:
+
+logger:
+  default: info
+  logs:
+    custom_components.openmeteo_weather: debug
+    aioopenmeteo: debug

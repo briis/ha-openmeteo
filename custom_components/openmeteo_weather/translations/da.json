@@ -1,0 +1,439 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Open-Meteo Vejr",
+        "description": "Prognose fra Open-Meteo.com, gratis til ikke-kommerciel brug. Data: Open-Meteo.com, CC BY 4.0.",
+        "data": {
+          "name": "Navn",
+          "location": "Placering",
+          "model": "Vejrmodel",
+          "air_quality": "Luftkvalitet og pollen",
+          "forecast_days": "Prognosedage",
+          "minutely_15": "Data for hvert kvarter"
+        },
+        "data_description": {
+          "location": "Punktet der skal laves prognose for",
+          "model": "Best match kombinerer de bedste modeller for din placering. Regionale modeller virker kun inden for deres område.",
+          "air_quality": "Luftkvalitetsindeks, partikler, gasser og pollen fra CAMS, hver time",
+          "forecast_days": "Længden af dags- og timeprognosen (1-16 dage)",
+          "minutely_15": "Bruges til nedbør og vindstød i den næste time. Rigtige kvartersdata i Centraleuropa og Nordamerika, interpoleret andre steder."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kunne ikke forbinde til Open-Meteo",
+      "rate_limited": "Open-Meteos gratis grænse er nået, prøv igen senere",
+      "unknown": "Uventet svar fra Open-Meteo",
+      "model_not_available": "Modellen har ingen data for placeringen",
+      "model_already_configured": "Placeringen er allerede sat op med denne model"
+    },
+    "abort": {
+      "already_configured": "Placeringen er allerede sat op med denne model"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Open-Meteo indstillinger",
+        "description": "Skifter du model, erstattes sensorer som den nye model ikke leverer.",
+        "data": {
+          "model": "Vejrmodel",
+          "air_quality": "Luftkvalitet og pollen",
+          "forecast_days": "Prognosedage",
+          "minutely_15": "Data for hvert kvarter"
+        },
+        "data_description": {
+          "model": "Best match kombinerer de bedste modeller for din placering. Regionale modeller virker kun inden for deres område.",
+          "air_quality": "Luftkvalitetsindeks, partikler, gasser og pollen fra CAMS, hver time",
+          "forecast_days": "Længden af dags- og timeprognosen (1-16 dage)",
+          "minutely_15": "Bruges til nedbør og vindstød i den næste time. Rigtige kvartersdata i Centraleuropa og Nordamerika, interpoleret andre steder."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kunne ikke forbinde til Open-Meteo",
+      "rate_limited": "Open-Meteos gratis grænse er nået, prøv igen senere",
+      "unknown": "Uventet svar fra Open-Meteo",
+      "model_not_available": "Modellen har ingen data for placeringen",
+      "model_already_configured": "Placeringen er allerede sat op med denne model"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": {
+        "name": "Temperatur"
+      },
+      "apparent_temperature": {
+        "name": "Føles som"
+      },
+      "dew_point": {
+        "name": "Dugpunkt"
+      },
+      "wet_bulb_temperature": {
+        "name": "Vådtemperatur"
+      },
+      "humidity": {
+        "name": "Luftfugtighed"
+      },
+      "weather": {
+        "name": "Vejr",
+        "state": {
+          "clear_sky": "Skyfrit",
+          "mainly_clear": "Overvejende skyfrit",
+          "partly_cloudy": "Delvis skyet",
+          "overcast": "Overskyet",
+          "fog": "Tåge",
+          "depositing_rime_fog": "Rimtåge",
+          "drizzle_light": "Let støvregn",
+          "drizzle_moderate": "Støvregn",
+          "drizzle_dense": "Tæt støvregn",
+          "freezing_drizzle_light": "Let isslag",
+          "freezing_drizzle_dense": "Kraftig isslag",
+          "rain_slight": "Let regn",
+          "rain_moderate": "Regn",
+          "rain_heavy": "Kraftig regn",
+          "freezing_rain_light": "Let underafkølet regn",
+          "freezing_rain_heavy": "Kraftig underafkølet regn",
+          "snow_slight": "Let sne",
+          "snow_moderate": "Sne",
+          "snow_heavy": "Kraftigt snefald",
+          "snow_grains": "Kornsne",
+          "rain_showers_slight": "Lette regnbyger",
+          "rain_showers_moderate": "Regnbyger",
+          "rain_showers_violent": "Kraftige regnbyger",
+          "snow_showers_slight": "Lette snebyger",
+          "snow_showers_heavy": "Kraftige snebyger",
+          "thunderstorm": "Torden",
+          "thunderstorm_slight_hail": "Torden med hagl",
+          "thunderstorm_heavy_hail": "Torden med kraftige hagl"
+        }
+      },
+      "precipitation": {
+        "name": "Nedbør"
+      },
+      "precipitation_probability": {
+        "name": "Sandsynlighed for nedbør"
+      },
+      "rain": {
+        "name": "Regn"
+      },
+      "showers": {
+        "name": "Byger"
+      },
+      "snowfall": {
+        "name": "Snefald"
+      },
+      "snow_depth": {
+        "name": "Snedybde"
+      },
+      "cloud_cover": {
+        "name": "Skydække"
+      },
+      "cloud_cover_low": {
+        "name": "Lavt skydække"
+      },
+      "cloud_cover_mid": {
+        "name": "Mellemhøjt skydække"
+      },
+      "cloud_cover_high": {
+        "name": "Højt skydække"
+      },
+      "pressure": {
+        "name": "Lufttryk"
+      },
+      "surface_pressure": {
+        "name": "Lufttryk ved jorden"
+      },
+      "wind_speed": {
+        "name": "Vindhastighed"
+      },
+      "wind_direction": {
+        "name": "Vindretning"
+      },
+      "wind_gusts": {
+        "name": "Vindstød"
+      },
+      "wind_speed_80m": {
+        "name": "Vindhastighed (80 m)"
+      },
+      "wind_direction_80m": {
+        "name": "Vindretning (80 m)"
+      },
+      "visibility": {
+        "name": "Sigtbarhed"
+      },
+      "uv_index": {
+        "name": "UV-indeks"
+      },
+      "uv_index_clear_sky": {
+        "name": "UV-indeks, skyfri himmel"
+      },
+      "solar_radiation": {
+        "name": "Solindstråling"
+      },
+      "direct_radiation": {
+        "name": "Direkte stråling"
+      },
+      "diffuse_radiation": {
+        "name": "Diffus stråling"
+      },
+      "direct_normal_irradiance": {
+        "name": "Direkte normalindstråling"
+      },
+      "terrestrial_radiation": {
+        "name": "Stråling uden for atmosfæren"
+      },
+      "sunshine_duration": {
+        "name": "Solskin (seneste 15 min)"
+      },
+      "cape": {
+        "name": "CAPE"
+      },
+      "lifted_index": {
+        "name": "Lifted index"
+      },
+      "convective_inhibition": {
+        "name": "Konvektiv hæmning"
+      },
+      "freezing_level_height": {
+        "name": "Frysepunktshøjde"
+      },
+      "boundary_layer_height": {
+        "name": "Grænselagshøjde"
+      },
+      "vapour_pressure_deficit": {
+        "name": "Damptryksunderskud"
+      },
+      "evapotranspiration": {
+        "name": "Fordampning"
+      },
+      "et0_fao_evapotranspiration": {
+        "name": "Referencefordampning"
+      },
+      "total_column_integrated_water_vapour": {
+        "name": "Vanddamp i luftsøjlen"
+      },
+      "soil_temperature_0cm": {
+        "name": "Jordtemperatur (0 cm)"
+      },
+      "soil_temperature_6cm": {
+        "name": "Jordtemperatur (6 cm)"
+      },
+      "soil_temperature_18cm": {
+        "name": "Jordtemperatur (18 cm)"
+      },
+      "soil_temperature_54cm": {
+        "name": "Jordtemperatur (54 cm)"
+      },
+      "soil_moisture_0_to_1cm": {
+        "name": "Jordfugtighed (0-1 cm)"
+      },
+      "soil_moisture_1_to_3cm": {
+        "name": "Jordfugtighed (1-3 cm)"
+      },
+      "soil_moisture_3_to_9cm": {
+        "name": "Jordfugtighed (3-9 cm)"
+      },
+      "soil_moisture_9_to_27cm": {
+        "name": "Jordfugtighed (9-27 cm)"
+      },
+      "soil_moisture_27_to_81cm": {
+        "name": "Jordfugtighed (27-81 cm)"
+      },
+      "today_weather": {
+        "name": "Vejret i dag",
+        "state": {
+          "clear_sky": "Skyfrit",
+          "mainly_clear": "Overvejende skyfrit",
+          "partly_cloudy": "Delvis skyet",
+          "overcast": "Overskyet",
+          "fog": "Tåge",
+          "depositing_rime_fog": "Rimtåge",
+          "drizzle_light": "Let støvregn",
+          "drizzle_moderate": "Støvregn",
+          "drizzle_dense": "Tæt støvregn",
+          "freezing_drizzle_light": "Let isslag",
+          "freezing_drizzle_dense": "Kraftig isslag",
+          "rain_slight": "Let regn",
+          "rain_moderate": "Regn",
+          "rain_heavy": "Kraftig regn",
+          "freezing_rain_light": "Let underafkølet regn",
+          "freezing_rain_heavy": "Kraftig underafkølet regn",
+          "snow_slight": "Let sne",
+          "snow_moderate": "Sne",
+          "snow_heavy": "Kraftigt snefald",
+          "snow_grains": "Kornsne",
+          "rain_showers_slight": "Lette regnbyger",
+          "rain_showers_moderate": "Regnbyger",
+          "rain_showers_violent": "Kraftige regnbyger",
+          "snow_showers_slight": "Lette snebyger",
+          "snow_showers_heavy": "Kraftige snebyger",
+          "thunderstorm": "Torden",
+          "thunderstorm_slight_hail": "Torden med hagl",
+          "thunderstorm_heavy_hail": "Torden med kraftige hagl"
+        }
+      },
+      "today_temperature_max": {
+        "name": "Højeste temperatur i dag"
+      },
+      "today_temperature_min": {
+        "name": "Laveste temperatur i dag"
+      },
+      "today_apparent_temperature_max": {
+        "name": "Højeste føles som i dag"
+      },
+      "today_apparent_temperature_min": {
+        "name": "Laveste føles som i dag"
+      },
+      "today_precipitation_sum": {
+        "name": "Nedbør i dag"
+      },
+      "today_rain_sum": {
+        "name": "Regn i dag"
+      },
+      "today_showers_sum": {
+        "name": "Byger i dag"
+      },
+      "today_snowfall_sum": {
+        "name": "Snefald i dag"
+      },
+      "today_precipitation_hours": {
+        "name": "Timer med nedbør i dag"
+      },
+      "today_precipitation_probability_max": {
+        "name": "Sandsynlighed for nedbør i dag"
+      },
+      "today_wind_speed_10m_max": {
+        "name": "Højeste vindhastighed i dag"
+      },
+      "today_wind_gusts_10m_max": {
+        "name": "Kraftigste vindstød i dag"
+      },
+      "today_wind_direction_10m_dominant": {
+        "name": "Fremherskende vindretning i dag"
+      },
+      "today_uv_index_max": {
+        "name": "Højeste UV-indeks i dag"
+      },
+      "today_sunshine_duration": {
+        "name": "Solskinstimer i dag"
+      },
+      "today_daylight_duration": {
+        "name": "Dagslys i dag"
+      },
+      "today_shortwave_radiation_sum": {
+        "name": "Solenergi i dag"
+      },
+      "today_et0_fao_evapotranspiration": {
+        "name": "Referencefordampning i dag"
+      },
+      "sunrise": {
+        "name": "Solopgang"
+      },
+      "sunset": {
+        "name": "Solnedgang"
+      },
+      "moonrise": {
+        "name": "Måneopgang"
+      },
+      "moonset": {
+        "name": "Månenedgang"
+      },
+      "moon_phase": {
+        "name": "Månefase",
+        "state": {
+          "new_moon": "Nymåne",
+          "waxing_crescent": "Tiltagende måne",
+          "first_quarter": "Første kvarter",
+          "waxing_gibbous": "Tiltagende fuldmåne",
+          "full_moon": "Fuldmåne",
+          "waning_gibbous": "Aftagende fuldmåne",
+          "last_quarter": "Sidste kvarter",
+          "waning_crescent": "Aftagende måne"
+        }
+      },
+      "precipitation_next_hour": {
+        "name": "Nedbør næste time"
+      },
+      "wind_gusts_next_hour": {
+        "name": "Kraftigste vindstød næste time"
+      },
+      "lightning_potential_next_hour": {
+        "name": "Lynpotentiale næste time"
+      },
+      "european_aqi": {
+        "name": "Europæisk luftkvalitetsindeks"
+      },
+      "european_aqi_pm2_5": {
+        "name": "Europæisk luftkvalitetsindeks PM2.5"
+      },
+      "european_aqi_pm10": {
+        "name": "Europæisk luftkvalitetsindeks PM10"
+      },
+      "european_aqi_nitrogen_dioxide": {
+        "name": "Europæisk luftkvalitetsindeks kvælstofdioxid"
+      },
+      "european_aqi_ozone": {
+        "name": "Europæisk luftkvalitetsindeks ozon"
+      },
+      "european_aqi_sulphur_dioxide": {
+        "name": "Europæisk luftkvalitetsindeks svovldioxid"
+      },
+      "us_aqi": {
+        "name": "Amerikansk luftkvalitetsindeks"
+      },
+      "pm2_5": {
+        "name": "PM2.5"
+      },
+      "pm10": {
+        "name": "PM10"
+      },
+      "nitrogen_dioxide": {
+        "name": "Kvælstofdioxid"
+      },
+      "ozone": {
+        "name": "Ozon"
+      },
+      "sulphur_dioxide": {
+        "name": "Svovldioxid"
+      },
+      "carbon_monoxide": {
+        "name": "Kulilte"
+      },
+      "carbon_dioxide": {
+        "name": "Kuldioxid"
+      },
+      "dust": {
+        "name": "Støv"
+      },
+      "ammonia": {
+        "name": "Ammoniak"
+      },
+      "methane": {
+        "name": "Metan"
+      },
+      "aerosol_optical_depth": {
+        "name": "Aerosol optisk dybde"
+      },
+      "alder_pollen": {
+        "name": "Ellepollen"
+      },
+      "birch_pollen": {
+        "name": "Birkepollen"
+      },
+      "grass_pollen": {
+        "name": "Græspollen"
+      },
+      "mugwort_pollen": {
+        "name": "Bynkepollen"
+      },
+      "olive_pollen": {
+        "name": "Olivenpollen"
+      },
+      "ragweed_pollen": {
+        "name": "Ambrosiapollen"
+      }
+    }
+  }
+}
