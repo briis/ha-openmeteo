@@ -1,0 +1,6 @@
+{
+  "name": "Open-Meteo Weather",
+  "homeassistant": "2026.1.0",
+  "zip_release": true,
+  "filename": "openmeteo_weather.zip"
+}

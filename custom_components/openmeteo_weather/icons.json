@@ -1,0 +1,61 @@
+{
+  "entity": {
+    "sensor": {
+      "weather": { "default": "mdi:weather-partly-cloudy" },
+      "today_weather": { "default": "mdi:weather-partly-cloudy" },
+      "precipitation_probability": { "default": "mdi:weather-rainy" },
+      "today_precipitation_probability_max": { "default": "mdi:weather-rainy" },
+      "today_precipitation_hours": { "default": "mdi:timer-sand" },
+      "cloud_cover": { "default": "mdi:weather-cloudy" },
+      "cloud_cover_low": { "default": "mdi:weather-cloudy" },
+      "cloud_cover_mid": { "default": "mdi:weather-cloudy" },
+      "cloud_cover_high": { "default": "mdi:weather-cloudy" },
+      "uv_index": { "default": "mdi:sun-wireless" },
+      "uv_index_clear_sky": { "default": "mdi:sun-wireless" },
+      "today_uv_index_max": { "default": "mdi:sun-wireless" },
+      "sunshine_duration": { "default": "mdi:weather-sunny" },
+      "today_sunshine_duration": { "default": "mdi:weather-sunny" },
+      "today_daylight_duration": { "default": "mdi:white-balance-sunny" },
+      "sunrise": { "default": "mdi:weather-sunset-up" },
+      "sunset": { "default": "mdi:weather-sunset-down" },
+      "moonrise": { "default": "mdi:weather-night" },
+      "moonset": { "default": "mdi:weather-night" },
+      "moon_phase": {
+        "default": "mdi:moon-full",
+        "state": {
+          "new_moon": "mdi:moon-new",
+          "waxing_crescent": "mdi:moon-waxing-crescent",
+          "first_quarter": "mdi:moon-first-quarter",
+          "waxing_gibbous": "mdi:moon-waxing-gibbous",
+          "full_moon": "mdi:moon-full",
+          "waning_gibbous": "mdi:moon-waning-gibbous",
+          "last_quarter": "mdi:moon-last-quarter",
+          "waning_crescent": "mdi:moon-waning-crescent"
+        }
+      },
+      "snow_depth": { "default": "mdi:snowflake" },
+      "cape": { "default": "mdi:weather-lightning" },
+      "lifted_index": { "default": "mdi:weather-lightning" },
+      "convective_inhibition": { "default": "mdi:weather-lightning" },
+      "lightning_potential_next_hour": { "default": "mdi:weather-lightning" },
+      "freezing_level_height": { "default": "mdi:snowflake-thermometer" },
+      "boundary_layer_height": { "default": "mdi:arrow-expand-vertical" },
+      "vapour_pressure_deficit": { "default": "mdi:water-percent" },
+      "evapotranspiration": { "default": "mdi:water-sync" },
+      "et0_fao_evapotranspiration": { "default": "mdi:water-sync" },
+      "today_et0_fao_evapotranspiration": { "default": "mdi:water-sync" },
+      "total_column_integrated_water_vapour": { "default": "mdi:water" },
+      "today_shortwave_radiation_sum": { "default": "mdi:solar-power" },
+      "dust": { "default": "mdi:weather-dust" },
+      "ammonia": { "default": "mdi:molecule" },
+      "methane": { "default": "mdi:molecule" },
+      "aerosol_optical_depth": { "default": "mdi:weather-hazy" },
+      "alder_pollen": { "default": "mdi:tree" },
+      "birch_pollen": { "default": "mdi:tree" },
+      "olive_pollen": { "default": "mdi:tree" },
+      "grass_pollen": { "default": "mdi:grass" },
+      "mugwort_pollen": { "default": "mdi:flower-pollen" },
+      "ragweed_pollen": { "default": "mdi:flower-pollen" }
+    }
+  }
+}

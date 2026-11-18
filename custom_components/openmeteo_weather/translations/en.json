@@ -1,0 +1,439 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Open-Meteo Weather",
+        "description": "Forecast from Open-Meteo.com, free for non-commercial use. Data: Open-Meteo.com, CC BY 4.0.",
+        "data": {
+          "name": "Name",
+          "location": "Location",
+          "model": "Weather model",
+          "air_quality": "Air quality and pollen",
+          "forecast_days": "Forecast days",
+          "minutely_15": "15-minute data"
+        },
+        "data_description": {
+          "location": "The point to forecast for",
+          "model": "Best match combines the best models for your location. Regional models only work inside their area.",
+          "air_quality": "Air quality index, particles, gases and pollen from CAMS, every hour",
+          "forecast_days": "Length of the daily and hourly forecast (1-16 days)",
+          "minutely_15": "Used for precipitation and gusts in the next hour. Native in Central Europe and North America, interpolated elsewhere."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not connect to Open-Meteo",
+      "rate_limited": "Open-Meteo's free limit has been reached, try again later",
+      "unknown": "Unexpected answer from Open-Meteo",
+      "model_not_available": "This model has no data for the location",
+      "model_already_configured": "This location is already set up with this model"
+    },
+    "abort": {
+      "already_configured": "This location is already set up with this model"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Open-Meteo settings",
+        "description": "Changing the model replaces sensors the new model does not provide.",
+        "data": {
+          "model": "Weather model",
+          "air_quality": "Air quality and pollen",
+          "forecast_days": "Forecast days",
+          "minutely_15": "15-minute data"
+        },
+        "data_description": {
+          "model": "Best match combines the best models for your location. Regional models only work inside their area.",
+          "air_quality": "Air quality index, particles, gases and pollen from CAMS, every hour",
+          "forecast_days": "Length of the daily and hourly forecast (1-16 days)",
+          "minutely_15": "Used for precipitation and gusts in the next hour. Native in Central Europe and North America, interpolated elsewhere."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not connect to Open-Meteo",
+      "rate_limited": "Open-Meteo's free limit has been reached, try again later",
+      "unknown": "Unexpected answer from Open-Meteo",
+      "model_not_available": "This model has no data for the location",
+      "model_already_configured": "This location is already set up with this model"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": {
+        "name": "Temperature"
+      },
+      "apparent_temperature": {
+        "name": "Feels like"
+      },
+      "dew_point": {
+        "name": "Dew point"
+      },
+      "wet_bulb_temperature": {
+        "name": "Wet bulb temperature"
+      },
+      "humidity": {
+        "name": "Humidity"
+      },
+      "weather": {
+        "name": "Weather",
+        "state": {
+          "clear_sky": "Clear sky",
+          "mainly_clear": "Mainly clear",
+          "partly_cloudy": "Partly cloudy",
+          "overcast": "Overcast",
+          "fog": "Fog",
+          "depositing_rime_fog": "Freezing fog",
+          "drizzle_light": "Light drizzle",
+          "drizzle_moderate": "Drizzle",
+          "drizzle_dense": "Dense drizzle",
+          "freezing_drizzle_light": "Light freezing drizzle",
+          "freezing_drizzle_dense": "Dense freezing drizzle",
+          "rain_slight": "Light rain",
+          "rain_moderate": "Rain",
+          "rain_heavy": "Heavy rain",
+          "freezing_rain_light": "Light freezing rain",
+          "freezing_rain_heavy": "Heavy freezing rain",
+          "snow_slight": "Light snow",
+          "snow_moderate": "Snow",
+          "snow_heavy": "Heavy snow",
+          "snow_grains": "Snow grains",
+          "rain_showers_slight": "Light rain showers",
+          "rain_showers_moderate": "Rain showers",
+          "rain_showers_violent": "Violent rain showers",
+          "snow_showers_slight": "Light snow showers",
+          "snow_showers_heavy": "Heavy snow showers",
+          "thunderstorm": "Thunderstorm",
+          "thunderstorm_slight_hail": "Thunderstorm with hail",
+          "thunderstorm_heavy_hail": "Thunderstorm with heavy hail"
+        }
+      },
+      "precipitation": {
+        "name": "Precipitation"
+      },
+      "precipitation_probability": {
+        "name": "Chance of precipitation"
+      },
+      "rain": {
+        "name": "Rain"
+      },
+      "showers": {
+        "name": "Showers"
+      },
+      "snowfall": {
+        "name": "Snowfall"
+      },
+      "snow_depth": {
+        "name": "Snow depth"
+      },
+      "cloud_cover": {
+        "name": "Cloud cover"
+      },
+      "cloud_cover_low": {
+        "name": "Low cloud cover"
+      },
+      "cloud_cover_mid": {
+        "name": "Mid cloud cover"
+      },
+      "cloud_cover_high": {
+        "name": "High cloud cover"
+      },
+      "pressure": {
+        "name": "Pressure"
+      },
+      "surface_pressure": {
+        "name": "Surface pressure"
+      },
+      "wind_speed": {
+        "name": "Wind speed"
+      },
+      "wind_direction": {
+        "name": "Wind direction"
+      },
+      "wind_gusts": {
+        "name": "Wind gusts"
+      },
+      "wind_speed_80m": {
+        "name": "Wind speed (80 m)"
+      },
+      "wind_direction_80m": {
+        "name": "Wind direction (80 m)"
+      },
+      "visibility": {
+        "name": "Visibility"
+      },
+      "uv_index": {
+        "name": "UV index"
+      },
+      "uv_index_clear_sky": {
+        "name": "UV index, clear sky"
+      },
+      "solar_radiation": {
+        "name": "Solar radiation"
+      },
+      "direct_radiation": {
+        "name": "Direct radiation"
+      },
+      "diffuse_radiation": {
+        "name": "Diffuse radiation"
+      },
+      "direct_normal_irradiance": {
+        "name": "Direct normal irradiance"
+      },
+      "terrestrial_radiation": {
+        "name": "Terrestrial radiation"
+      },
+      "sunshine_duration": {
+        "name": "Sunshine (last 15 min)"
+      },
+      "cape": {
+        "name": "CAPE"
+      },
+      "lifted_index": {
+        "name": "Lifted index"
+      },
+      "convective_inhibition": {
+        "name": "Convective inhibition"
+      },
+      "freezing_level_height": {
+        "name": "Freezing level"
+      },
+      "boundary_layer_height": {
+        "name": "Boundary layer height"
+      },
+      "vapour_pressure_deficit": {
+        "name": "Vapour pressure deficit"
+      },
+      "evapotranspiration": {
+        "name": "Evapotranspiration"
+      },
+      "et0_fao_evapotranspiration": {
+        "name": "Reference evapotranspiration"
+      },
+      "total_column_integrated_water_vapour": {
+        "name": "Water vapour column"
+      },
+      "soil_temperature_0cm": {
+        "name": "Soil temperature (0 cm)"
+      },
+      "soil_temperature_6cm": {
+        "name": "Soil temperature (6 cm)"
+      },
+      "soil_temperature_18cm": {
+        "name": "Soil temperature (18 cm)"
+      },
+      "soil_temperature_54cm": {
+        "name": "Soil temperature (54 cm)"
+      },
+      "soil_moisture_0_to_1cm": {
+        "name": "Soil moisture (0-1 cm)"
+      },
+      "soil_moisture_1_to_3cm": {
+        "name": "Soil moisture (1-3 cm)"
+      },
+      "soil_moisture_3_to_9cm": {
+        "name": "Soil moisture (3-9 cm)"
+      },
+      "soil_moisture_9_to_27cm": {
+        "name": "Soil moisture (9-27 cm)"
+      },
+      "soil_moisture_27_to_81cm": {
+        "name": "Soil moisture (27-81 cm)"
+      },
+      "today_weather": {
+        "name": "Weather today",
+        "state": {
+          "clear_sky": "Clear sky",
+          "mainly_clear": "Mainly clear",
+          "partly_cloudy": "Partly cloudy",
+          "overcast": "Overcast",
+          "fog": "Fog",
+          "depositing_rime_fog": "Freezing fog",
+          "drizzle_light": "Light drizzle",
+          "drizzle_moderate": "Drizzle",
+          "drizzle_dense": "Dense drizzle",
+          "freezing_drizzle_light": "Light freezing drizzle",
+          "freezing_drizzle_dense": "Dense freezing drizzle",
+          "rain_slight": "Light rain",
+          "rain_moderate": "Rain",
+          "rain_heavy": "Heavy rain",
+          "freezing_rain_light": "Light freezing rain",
+          "freezing_rain_heavy": "Heavy freezing rain",
+          "snow_slight": "Light snow",
+          "snow_moderate": "Snow",
+          "snow_heavy": "Heavy snow",
+          "snow_grains": "Snow grains",
+          "rain_showers_slight": "Light rain showers",
+          "rain_showers_moderate": "Rain showers",
+          "rain_showers_violent": "Violent rain showers",
+          "snow_showers_slight": "Light snow showers",
+          "snow_showers_heavy": "Heavy snow showers",
+          "thunderstorm": "Thunderstorm",
+          "thunderstorm_slight_hail": "Thunderstorm with hail",
+          "thunderstorm_heavy_hail": "Thunderstorm with heavy hail"
+        }
+      },
+      "today_temperature_max": {
+        "name": "Max temperature today"
+      },
+      "today_temperature_min": {
+        "name": "Min temperature today"
+      },
+      "today_apparent_temperature_max": {
+        "name": "Max feels like today"
+      },
+      "today_apparent_temperature_min": {
+        "name": "Min feels like today"
+      },
+      "today_precipitation_sum": {
+        "name": "Precipitation today"
+      },
+      "today_rain_sum": {
+        "name": "Rain today"
+      },
+      "today_showers_sum": {
+        "name": "Showers today"
+      },
+      "today_snowfall_sum": {
+        "name": "Snowfall today"
+      },
+      "today_precipitation_hours": {
+        "name": "Hours with precipitation today"
+      },
+      "today_precipitation_probability_max": {
+        "name": "Chance of precipitation today"
+      },
+      "today_wind_speed_10m_max": {
+        "name": "Max wind speed today"
+      },
+      "today_wind_gusts_10m_max": {
+        "name": "Max wind gusts today"
+      },
+      "today_wind_direction_10m_dominant": {
+        "name": "Dominant wind direction today"
+      },
+      "today_uv_index_max": {
+        "name": "Max UV index today"
+      },
+      "today_sunshine_duration": {
+        "name": "Sunshine today"
+      },
+      "today_daylight_duration": {
+        "name": "Daylight today"
+      },
+      "today_shortwave_radiation_sum": {
+        "name": "Solar energy today"
+      },
+      "today_et0_fao_evapotranspiration": {
+        "name": "Reference evapotranspiration today"
+      },
+      "sunrise": {
+        "name": "Sunrise"
+      },
+      "sunset": {
+        "name": "Sunset"
+      },
+      "moonrise": {
+        "name": "Moonrise"
+      },
+      "moonset": {
+        "name": "Moonset"
+      },
+      "moon_phase": {
+        "name": "Moon phase",
+        "state": {
+          "new_moon": "New moon",
+          "waxing_crescent": "Waxing crescent",
+          "first_quarter": "First quarter",
+          "waxing_gibbous": "Waxing gibbous",
+          "full_moon": "Full moon",
+          "waning_gibbous": "Waning gibbous",
+          "last_quarter": "Last quarter",
+          "waning_crescent": "Waning crescent"
+        }
+      },
+      "precipitation_next_hour": {
+        "name": "Precipitation next hour"
+      },
+      "wind_gusts_next_hour": {
+        "name": "Max wind gusts next hour"
+      },
+      "lightning_potential_next_hour": {
+        "name": "Lightning potential next hour"
+      },
+      "european_aqi": {
+        "name": "European AQI"
+      },
+      "european_aqi_pm2_5": {
+        "name": "European AQI PM2.5"
+      },
+      "european_aqi_pm10": {
+        "name": "European AQI PM10"
+      },
+      "european_aqi_nitrogen_dioxide": {
+        "name": "European AQI nitrogen dioxide"
+      },
+      "european_aqi_ozone": {
+        "name": "European AQI ozone"
+      },
+      "european_aqi_sulphur_dioxide": {
+        "name": "European AQI sulphur dioxide"
+      },
+      "us_aqi": {
+        "name": "US AQI"
+      },
+      "pm2_5": {
+        "name": "PM2.5"
+      },
+      "pm10": {
+        "name": "PM10"
+      },
+      "nitrogen_dioxide": {
+        "name": "Nitrogen dioxide"
+      },
+      "ozone": {
+        "name": "Ozone"
+      },
+      "sulphur_dioxide": {
+        "name": "Sulphur dioxide"
+      },
+      "carbon_monoxide": {
+        "name": "Carbon monoxide"
+      },
+      "carbon_dioxide": {
+        "name": "Carbon dioxide"
+      },
+      "dust": {
+        "name": "Dust"
+      },
+      "ammonia": {
+        "name": "Ammonia"
+      },
+      "methane": {
+        "name": "Methane"
+      },
+      "aerosol_optical_depth": {
+        "name": "Aerosol optical depth"
+      },
+      "alder_pollen": {
+        "name": "Alder pollen"
+      },
+      "birch_pollen": {
+        "name": "Birch pollen"
+      },
+      "grass_pollen": {
+        "name": "Grass pollen"
+      },
+      "mugwort_pollen": {
+        "name": "Mugwort pollen"
+      },
+      "olive_pollen": {
+        "name": "Olive pollen"
+      },
+      "ragweed_pollen": {
+        "name": "Ragweed pollen"
+      }
+    }
+  }
+}
